@@ -1,4 +1,4 @@
-# Data Project: MSSQL to Power BI Dashboard
+![image](https://github.com/user-attachments/assets/36c8def6-12f9-421a-8b42-a600607f1592)![image](https://github.com/user-attachments/assets/6aa17c26-b063-4a6b-b94a-fafc4aa88848)# Data Project: MSSQL to Power BI Dashboard
 
 <p align="center">
   <img src="https://i.pinimg.com/originals/f9/fd/ee/f9fdee9073b6b6c4ade999a359fbd012.gif">
@@ -154,7 +154,9 @@ Following Youtubers had highest **NUMBER OF VIEWS**:
 YouTubers listed above gathered substantial attention, with view counts ranging from 2 billion to 14.4 billion. These channels are likely major influencers.
 
 Youtubers with highest **ENGAGEMENT RATE**
+
 From that standpoint, we will consider engagement rate metrics as the most important ones as they clearly indicate channel's future possibility to attract sales from the marketing campaign.
+
 *Engagement rate metrics are ratios between views, subscribers and videos count.*
 
 ![image](https://github.com/user-attachments/assets/32e5ec73-3a2f-475f-9590-30e48d212a9b)
@@ -162,9 +164,13 @@ From that standpoint, we will consider engagement rate metrics as the most impor
 Regions with highest **VIEWS PER VIDEO**
 
 Sweden:	925179
+
 Norway:	596256
+
 Finland: 590935
+
 Denmark: 279955
+
 
 Sweden has the highest engagement rate, with 925 thousand views per video, suggesting that content from Swedisg YouTubers is particularly popular. Norway and Finland have almost similar average engagement metrics of 590 thousand views per video, and Denmark has significantly lower engagement rate compared to other three Scandinavian regions indicating that Danish Youtubers are least popular.
 P.S. number of uploaded videos across all 4 regions are similar with relatively small difference.
@@ -176,9 +182,100 @@ Even though conducted analysis in SQL provided us valuable insights, from user e
 
 Six DAX Measures were used in dashboard
 
-* **Total Views**:
-```Total Views (B) = 
+* **Total Views (B)**
+* 
+```
+Total Views (B) = 
 var totalViews = sum(youtube_data_scandi[view_count])
 var billion = 1000000000
 var totalViewsB = DIVIDE(totalViews, billion)
-return totalViewsB```
+return totalViewsB
+```
+
+* **Total Subscribers (M)**
+```
+Total Subscribers (M) = 
+var totalSubscribers = sum(youtube_data_scandi[subscriber_count])
+var million = 1000000
+var totalSubs = divide(totalSubscribers, million)
+return totalSubs
+```
+
+* **Total Videos**
+```
+Total Videos = 
+var totalVideos = sum(youtube_data_scandi[video_count])
+return totalVideos
+```
+
+* **Engagement Rate**
+```
+Engagement Rate = 
+var totalVideos = sum(youtube_data_scandi[video_count])
+var totalSubs = sum(youtube_data_scandi[subscriber_count])
+var engagementRate = divide(totalSubs, totalVideos, blank())
+return engagementRate
+```
+
+* **Average Views per Video (M)**
+```
+Average Views per Video (M) = 
+var totalViews = sum(youtube_data_scandi[view_count])
+var totalVideos = sum(youtube_data_scandi[video_count])
+var averageViews = divide(totalViews, totalVideos, BLANK())
+var avgViews = divide(averageViews, 1000000, blank())
+return avgViews
+```
+
+* **Average Views per Subscriber**
+```
+Average Views per Subscriber = 
+var totalViews = sum(youtube_data_scandi[view_count])
+var totalSubs = sum(youtube_data_scandi[subscriber_count])
+var viewPerSub = divide(totalViews, totalSubs, blank())
+return viewPerSub
+```
+
+## ROI Calculations
+
+As a final step, we need to find out the most suitable Youtubers to conduct marketing campaing on them with maximized revenue.
+We use MS Excel to make calculations
+
+**Excel Spreadsheet**
+![image](https://github.com/user-attachments/assets/f398b4b2-6211-4882-845d-f0f105a0ddcf)
+
+**Sample example**
+
+* Conversion Rate: 0.1%
+* Product Cost: $5
+* Campaign Cost: $50 000
+
+* Channel Name: Alan Walker
+* Average Views Per Video: 24 370 000 views
+* Product Sales per Video: Average Views Per Video x Conversion Rate = 24 370 000 * 0.001 = 24 370 units
+* Revenue per Video: Product Sales per Video x Product Cost = 24 370 x $5 = $121 850 
+* Net profit: Revenue Per Video - Campaign Cost = 121 580 - 50 000 = $71 850
+
+From the spreadsheet, it is noticable that the highest net profit would be obtained if campaign ran on Avicii channel, attracting more than 250k+ USD per video 
+
+P.S. Above calculations are a result of approximate selection of conversion rate, product cost and campaign cost.
+
+* Campaign cost can vary based on the Youtuber choice
+
+  or
+  
+* Conversion rates are often lower than 0.1%
+
+## Validation using SQL 
+
+![image](https://github.com/user-attachments/assets/a2dfab08-dbc6-41cb-b015-69383583d9d3)
+
+
+## Recommendation
+
+Based on the findings and observations obtained by SQL | PBI analysis, we can come up with recommendations:
+
+* Use Power BI dashboard wisely, to monitor and adjust campaign cost
+* Run campaigns on TOP Youtubers by average views per videos such as Alan Walker and Avicii
+* Most engaging Youtubers are based in Swedish regions with 900k+ views per each video
+* Focusing on individual channels or whole regions are both lead to revenue optimization
