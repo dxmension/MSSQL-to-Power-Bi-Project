@@ -83,4 +83,102 @@ Only one column provided us with the valuable features for ETL process.
 ![image](https://github.com/user-attachments/assets/4935e37b-e4ed-41f6-abdd-e5840756b17a)
 
 
+## Data Quality Assurance 
+At that standpoint, dataset is considered complete, but before processing to dashboard development, we have to ensure that the quality of data is fit with our exepctations. 
+So data must be explored on anomalies (missing values, duplicates, outliers). Either SQL or Python is used to perform data quality check.
 
+What kind of checks should be performed:
+* Row-column count 
+* Data type 
+* Duplicates
+* Missing values
+
+![image](https://github.com/user-attachments/assets/36bdc89e-3c25-43df-87f0-045745796fc0)
+
+As a result, all 4 data quality tests were passed:
+
+<table>
+  <tr>
+    <td>Column numbers</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Entry (row) numbers</td>
+    <td>385</td>
+  </tr>
+  <tr>
+    <td>Duplicates</td>
+    <td>0</td>
+  </tr>
+  <tr>
+    <td>Null values</td>
+    <td>0</td>
+  </tr>
+
+## Data Analysis using SQL
+Exploratory Data Analysis was conducted to address the problem of the task.
+
+#### General Distribution
+
+**Distribution of Youtubers across regions**
+
+![image](https://github.com/user-attachments/assets/2c64c1a1-97ee-4c91-94f2-33ea068312fa)
+
+**Results**
+* Finland: 95 (24.68%)
+* Denmark: 90 (23.34%)
+* Sweden: 90 (23.34%)
+* Norway: 88 (22.86%)
+
+Other Youtubers were spread across other countries such as US, UAE, GB, etc. indicating that Youtubers had moved to another region.
+
+
+**Youtubers with highest number of views and subscribers**
+
+![image](https://github.com/user-attachments/assets/6d7b6f39-6b30-43b1-8528-8921f600a1ad)
+
+**Results**
+Following Youtubers had highest **NUMBER OF VIEWS**:
+
+* Alan Walker	14.4 billion
+* Avicii	11.01 billion
+* Hydraulic Press Channel	5.25 billion
+* ABBA	4.71 billion
+* Soothing Relaxation	4.18 billion
+* Zara Larsson	3.25 billion
+* Rabbert	3.17 billion
+* Brawl Stars	2.63 billion
+* Levinho	2.46 billion
+* Roxette	2.42 billion
+
+YouTubers listed above gathered substantial attention, with view counts ranging from 2 billion to 14.4 billion. These channels are likely major influencers.
+
+Youtubers with highest **ENGAGEMENT RATE**
+From that standpoint, we will consider engagement rate metrics as the most important ones as they clearly indicate channel's future possibility to attract sales from the marketing campaign.
+*Engagement rate metrics are ratios between views, subscribers and videos count.*
+
+![image](https://github.com/user-attachments/assets/32e5ec73-3a2f-475f-9590-30e48d212a9b)
+
+Regions with highest **VIEWS PER VIDEO**
+
+Sweden:	925179
+Norway:	596256
+Finland: 590935
+Denmark: 279955
+
+Sweden has the highest engagement rate, with 925 thousand views per video, suggesting that content from Swedisg YouTubers is particularly popular. Norway and Finland have almost similar average engagement metrics of 590 thousand views per video, and Denmark has significantly lower engagement rate compared to other three Scandinavian regions indicating that Danish Youtubers are least popular.
+P.S. number of uploaded videos across all 4 regions are similar with relatively small difference.
+
+## Power BI Visualizations
+Even though conducted analysis in SQL provided us valuable insights, from user experience perspective dashboards offer dynamic and interactive representation of data clearly indicating patterns and trends visually instead of sometimes complicated table charts.
+
+![image](https://github.com/user-attachments/assets/b11e7814-d62f-4795-91a6-8b043518d945)
+
+Six DAX Measures were used in dashboard
+
+* **Total Views**:
+```Total Views (B) = 
+var totalViews = sum(youtube_data_scandi[view_count])
+var billion = 1000000000
+var totalViewsB = DIVIDE(totalViews, billion)
+return totalViewsB```
