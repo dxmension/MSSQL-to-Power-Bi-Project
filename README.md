@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/6aa17c26-b063-4a6b-b94a-fafc4aa88848)# Data Project: MSSQL to Power BI Dashboard
+# Data Project: MSSQL to Power BI Dashboard
 
 <p align="center">
   <img src="https://i.pinimg.com/originals/f9/fd/ee/f9fdee9073b6b6c4ade999a359fbd012.gif">
