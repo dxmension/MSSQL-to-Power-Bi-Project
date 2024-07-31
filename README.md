@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/36c8def6-12f9-421a-8b42-a600607f1592)![image](https://github.com/user-attachments/assets/6aa17c26-b063-4a6b-b94a-fafc4aa88848)# Data Project: MSSQL to Power BI Dashboard
+![image](https://github.com/user-attachments/assets/6aa17c26-b063-4a6b-b94a-fafc4aa88848)# Data Project: MSSQL to Power BI Dashboard
 
 <p align="center">
   <img src="https://i.pinimg.com/originals/f9/fd/ee/f9fdee9073b6b6c4ade999a359fbd012.gif">
@@ -26,32 +26,13 @@ We tried to perform some feature engineering with the variables, but we were not
 
 ## Project Process Overview
 
-<table>
-  <tr>
-    <td>Project Step</td>
-    <td>Step Overview</td>
-    <td>Tools</td>
-  </tr>
-  <tr>
-    <td>Dataset Creation</td>
-    <td>Using YouTube API enabled us to extract all necessary information about the YouTuber ID and save it into new CSV file</td>
-    <td>Python, YouTube API</td>
-  </tr>
-  <tr>
-    <td>Dataset Quality Assurance</td>
-    <td>Perform data quality checks and data analysis with the dataset</td>
-    <td>SQL</td>
-  </tr>
-  <tr>
-    <td>Dashboard Development</td>
-    <td>Create interactive dashboard using PBI to answer important questions</td>
-    <td>Power BI</td>
-  </tr>
-  <tr>
-    <td>Recommendations</td>
-    <td>Calculate potential ROI and provide top 5 Youtubers on whom marketing campaign should be ran to maximize revenue</td>
-    <td>Excel, SQL</td>
-  </tr>
+| Project Step             | Step Overview                                                                                        | Tools            |
+|--------------------------|-----------------------------------------------------------------------------------------------------|------------------|
+| **Dataset Creation**      | Using YouTube API enabled us to extract all necessary information about the YouTuber ID and save it into new CSV file | Python, YouTube API |
+| **Dataset Quality Assurance** | Perform data quality checks and data analysis with the dataset                                        | SQL              |
+| **Dashboard Development** | Create interactive dashboard using PBI to answer important questions                                  | Power BI         |
+| **Recommendations**       | Calculate potential ROI and provide top 5 YouTubers on whom the marketing campaign should be run to maximize revenue | Excel, SQL       |
+
 
 
 ## Dataset Creation
@@ -97,23 +78,13 @@ What kind of checks should be performed:
 
 As a result, all 4 data quality tests were passed:
 
-<table>
-  <tr>
-    <td>Column numbers</td>
-    <td>5</td>
-  </tr>
-  <tr>
-    <td>Entry (row) numbers</td>
-    <td>385</td>
-  </tr>
-  <tr>
-    <td>Duplicates</td>
-    <td>0</td>
-  </tr>
-  <tr>
-    <td>Null values</td>
-    <td>0</td>
-  </tr>
+| Metric               | Value |
+|----------------------|-------|
+| **Column numbers**    | 5     |
+| **Entry (row) numbers** | 385   |
+| **Duplicates**        | 0     |
+| **Null values**       | 0     |
+
 
 ## Data Analysis using SQL
 Exploratory Data Analysis was conducted to address the problem of the task.
@@ -183,7 +154,7 @@ Even though conducted analysis in SQL provided us valuable insights, from user e
 Six DAX Measures were used in dashboard
 
 * **Total Views (B)**
-* 
+  
 ```
 Total Views (B) = 
 var totalViews = sum(youtube_data_scandi[view_count])
